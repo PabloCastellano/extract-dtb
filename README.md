@@ -23,8 +23,9 @@ positional arguments:
   filename    Android kernel image
 
 optional arguments:
-  -h, --help  show this help message and exit
-  -n          Do not extract, just output information
+  -h, --help     show this help message and exit
+  -o OUTPUT_DIR  Output directory
+  -n             Do not extract, just output information
 ```
 
 Example:
@@ -33,10 +34,10 @@ Example:
 $ ./extract-dtb.py -n vmlinuz-motorola-titan
 Found 8 appended dtbs
 
-$ ./extract-dtb.py vmlinuz-motorola-titan
+$ ./extract-dtb.py vmlinuz-motorola-titan -o /tmp/dtb
 Extracted 8 appended dtbs + kernel
 
-$ ls -l
+$ ls -l /tmp/dtb
 total 8808
 -rw-rw-r-- 1 pablo pablo  194829 jun 25 17:14 dtbdump_1.dtb
 -rw-rw-r-- 1 pablo pablo  194829 jun 25 17:14 dtbdump_2.dtb
