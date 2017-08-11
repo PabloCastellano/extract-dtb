@@ -53,12 +53,12 @@ def split(args):
             last_pos = pos
 
         # Last chunk
-        dtb_filename = "dtbdump_{0}.dtb".format(n)
+        dtb_filename = "dtbdump_{0}.dtb".format(n + 1)
         dump_file(os.path.join(args.output_dir, dtb_filename), content[last_pos:])
         print("Extracted {0} appended dtbs + kernel to {1}"
-              .format(len(pos_dtb) - 1, args.output_dir))
+              .format(len(pos_dtb), args.output_dir))
     else:
-        print("Found {0} appended dtbs".format(len(pos_dtb) - 1))
+        print("Found {0} appended dtbs".format(len(pos_dtb)))
 
 
 if __name__ == "__main__":
