@@ -50,11 +50,13 @@ def split(args):
         for n, pos in enumerate(pos_dtb, 0):
             dtb_filename = "dtbdump_{0}.dtb".format(n) if n != 0 else "kernel"
             dump_file(os.path.join(args.output_dir, dtb_filename), content[last_pos:pos])
+            print("Dumped {0}, start={1} end={2}".format(dtb_filename, last_pos, pos))
             last_pos = pos
 
         # Last chunk
         dtb_filename = "dtbdump_{0}.dtb".format(n + 1)
         dump_file(os.path.join(args.output_dir, dtb_filename), content[last_pos:])
+        print("Dumped {0}, start={1} end={2}".format(dtb_filename, last_pos, len(content)))
         print("Extracted {0} appended dtbs + kernel to {1}"
               .format(len(pos_dtb), args.output_dir))
     else:
