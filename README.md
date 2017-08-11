@@ -15,17 +15,18 @@ If you want to learn more about DTB you can have a look at the
 
 ```
 $ ./extract-dtb.py --help
-usage: extract-dtb.py [-h] [-n] filename
+usage: extract-dtb.py [-h] [-o OUTPUT_DIR] [-n] [-V] filename
 
 Extract dtbs from kernel images.
 
 positional arguments:
-  filename    Android kernel image
+  filename       Android kernel image
 
 optional arguments:
   -h, --help     show this help message and exit
   -o OUTPUT_DIR  Output directory
   -n             Do not extract, just output information
+  -V, --version  show program's version number and exit
 ```
 
 Example:

@@ -20,6 +20,8 @@ along with extract-dtb.  If not, see <http://www.gnu.org/licenses/>.
 import argparse
 import os
 
+__version__ = "1.1"
+
 DTB_HEADER = b"\xd0\x0d\xfe\xed"
 
 
@@ -70,6 +72,8 @@ if __name__ == "__main__":
                         required=False, help="Output directory")
     parser.add_argument("-n", dest="extract", action="store_false", default=True,
                         required=False, help="Do not extract, just output information")
+    parser.add_argument("-V", "--version", action="version", version=__version__)
+
     args = parser.parse_args()
 
     split(args)
