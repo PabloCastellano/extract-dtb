@@ -32,22 +32,34 @@ optional arguments:
 Example:
 
 ```
-$ ./extract-dtb.py -n vmlinuz-motorola-titan
-Found 8 appended dtbs
+$ ./extract-dtb.py -n /tmp/postmarketOS-export/vmlinuz-motorola-titan
+Found 9 appended dtbs
 
-$ ./extract-dtb.py vmlinuz-motorola-titan -o /tmp/dtb
-Extracted 8 appended dtbs + kernel
+$ ./extract-dtb.py /tmp/postmarketOS-export/vmlinuz-motorola-titan -o /tmp/dtb
+Dumped kernel, start=0 end=7534024
+Dumped dtbdump_1.dtb, start=7534024 end=7728853
+Dumped dtbdump_2.dtb, start=7728853 end=7923682
+Dumped dtbdump_3.dtb, start=7923682 end=8118511
+Dumped dtbdump_4.dtb, start=8118511 end=8313340
+Dumped dtbdump_5.dtb, start=8313340 end=8508169
+Dumped dtbdump_6.dtb, start=8508169 end=8700762
+Dumped dtbdump_7.dtb, start=8700762 end=8894086
+Dumped dtbdump_8.dtb, start=8894086 end=9087470
+Dumped dtbdump_9.dtb, start=9087470 end=9280854
+Extracted 9 appended dtbs + kernel to /tmp/dtb
 
-$ ls -l /tmp/dtb
-total 8808
--rw-rw-r-- 1 pablo pablo  194829 jun 25 17:14 dtbdump_1.dtb
--rw-rw-r-- 1 pablo pablo  194829 jun 25 17:14 dtbdump_2.dtb
--rw-rw-r-- 1 pablo pablo  194829 jun 25 17:14 dtbdump_3.dtb
--rw-rw-r-- 1 pablo pablo  194829 jun 25 17:14 dtbdump_4.dtb
--rw-rw-r-- 1 pablo pablo  194829 jun 25 17:14 dtbdump_5.dtb
--rw-rw-r-- 1 pablo pablo  192593 jun 25 17:14 dtbdump_6.dtb
--rw-rw-r-- 1 pablo pablo  193324 jun 25 17:14 dtbdump_7.dtb
--rw-rw-r-- 1 pablo pablo  193384 jun 25 17:14 dtbdump_8.dtb
--rw-rw-r-- 1 pablo pablo 7368984 jun 25 17:14 kernel
--rw-r--r-- 1 pablo pablo 9115814 jun 22 23:54 vmlinuz-motorola-titan
+$ ls -l /tmp/dtb/
+total 9088
+-rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_1.dtb
+-rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_2.dtb
+-rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_3.dtb
+-rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_4.dtb
+-rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_5.dtb
+-rw-rw-r-- 1 pablo pablo  192593 Aug 11 09:34 dtbdump_6.dtb
+-rw-rw-r-- 1 pablo pablo  193324 Aug 11 09:34 dtbdump_7.dtb
+-rw-rw-r-- 1 pablo pablo  193384 Aug 11 09:34 dtbdump_8.dtb
+-rw-rw-r-- 1 pablo pablo  193384 Aug 11 09:34 dtbdump_9.dtb
+-rw-rw-r-- 1 pablo pablo 7534024 Aug 11 09:34 kernel
 ```
+
+Also works with `boot.img`.
