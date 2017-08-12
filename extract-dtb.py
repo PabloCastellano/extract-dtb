@@ -19,6 +19,7 @@ along with extract-dtb.  If not, see <http://www.gnu.org/licenses/>.
 
 import argparse
 import os
+import string
 
 __version__ = "1.1"
 
@@ -40,7 +41,7 @@ def split(args):
     dtb_next = content.find(DTB_HEADER)
     while dtb_next != -1:
         pos_dtb.append(dtb_next)
-        dtb_next = content.find(DTB_HEADER, dtb_next+1)
+        dtb_next = content.find(DTB_HEADER, dtb_next + 1)
 
     if len(pos_dtb) == 0:
         print("No appended dtbs found")
@@ -50,19 +51,46 @@ def split(args):
         os.makedirs(args.output_dir, exist_ok=True)
         last_pos = 0
         for n, pos in enumerate(pos_dtb, 0):
-            dtb_filename = "dtbdump_{0}.dtb".format(n) if n != 0 else "kernel"
+            dtb_filename = "dtbdump_{0:0>2}.dtb".format(n) if n != 0 else "kernel"
             dump_file(os.path.join(args.output_dir, dtb_filename), content[last_pos:pos])
+            if n != 0:
+                dtb_filename_new = "dtbdump_{0:0>2}_{1}.dtb".format(
+                    n,
+                    next(strings(os.path.join(args.output_dir, dtb_filename))).replace(" ", "_"))
+                os.rename(os.path.join(args.output_dir, dtb_filename),
+                          os.path.join(args.output_dir, dtb_filename_new))
+                dtb_filename = dtb_filename_new
             print("Dumped {0}, start={1} end={2}".format(dtb_filename, last_pos, pos))
             last_pos = pos
 
         # Last chunk
-        dtb_filename = "dtbdump_{0}.dtb".format(n + 1)
+        dtb_filename = "dtbdump_{0:0>2}.dtb".format(n + 1)
         dump_file(os.path.join(args.output_dir, dtb_filename), content[last_pos:])
-        print("Dumped {0}, start={1} end={2}".format(dtb_filename, last_pos, len(content)))
+        dtb_filename_new = "dtbdump_{0:0>2}_{1}.dtb".format(
+            n + 1,
+            next(strings(os.path.join(args.output_dir, dtb_filename))).replace(" ", "_"))
+        os.rename(os.path.join(args.output_dir, dtb_filename),
+                  os.path.join(args.output_dir, dtb_filename_new))
+        print("Dumped {0}, start={1} end={2}".format(dtb_filename_new, last_pos, len(content)))
         print("Extracted {0} appended dtbs + kernel to {1}"
               .format(len(pos_dtb), args.output_dir))
     else:
         print("Found {0} appended dtbs".format(len(pos_dtb)))
+
+
+def strings(filename, min=4):
+    # with open(filename, "rb") as f:           # Python 2.x
+    with open(filename, errors="ignore") as f:  # Python 3.x
+        result = ""
+        for c in f.read():
+            if c in string.printable:
+                result += c
+                continue
+            if len(result) >= min:
+                yield result
+            result = ""
+        if len(result) >= min:  # catch result at EOF
+            yield result
 
 
 if __name__ == "__main__":
