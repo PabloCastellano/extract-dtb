@@ -37,29 +37,29 @@ Found 9 appended dtbs
 
 $ ./extract-dtb.py /tmp/postmarketOS-export/vmlinuz-motorola-titan -o /tmp/dtb
 Dumped kernel, start=0 end=7534024
-Dumped dtbdump_1.dtb, start=7534024 end=7728853
-Dumped dtbdump_2.dtb, start=7728853 end=7923682
-Dumped dtbdump_3.dtb, start=7923682 end=8118511
-Dumped dtbdump_4.dtb, start=8118511 end=8313340
-Dumped dtbdump_5.dtb, start=8313340 end=8508169
-Dumped dtbdump_6.dtb, start=8508169 end=8700762
-Dumped dtbdump_7.dtb, start=8700762 end=8894086
-Dumped dtbdump_8.dtb, start=8894086 end=9087470
-Dumped dtbdump_9.dtb, start=9087470 end=9280854
+Dumped dtbdump_01_Motorola_QC-MSM8226_Titan.dtb, start=7534024 end=7728853
+Dumped dtbdump_02_Motorola_QC-MSM8226_Titan.dtb, start=7728853 end=7923682
+Dumped dtbdump_03_Motorola_QC-MSM8226_Titan.dtb, start=7923682 end=8118511
+Dumped dtbdump_04_Motorola_QC-MSM8226_Titan.dtb, start=8118511 end=8313340
+Dumped dtbdump_05_Motorola_QC-MSM8226_Titan.dtb, start=8313340 end=8508169
+Dumped dtbdump_06_Motorola_QC-MSM8226_Thea.dtb, start=8508169 end=8700762
+Dumped dtbdump_07_Motorola_QC-MSM8226_Thea.dtb, start=8700762 end=8894086
+Dumped dtbdump_08_Motorola_QC-MSM8226_Thea.dtb, start=8894086 end=9087470
+Dumped dtbdump_09_Motorola_QC-MSM8226_Thea.dtb, start=9087470 end=9280854
 Extracted 9 appended dtbs + kernel to /tmp/dtb
 
 $ ls -l /tmp/dtb/
 total 9088
--rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_1.dtb
--rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_2.dtb
--rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_3.dtb
--rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_4.dtb
--rw-rw-r-- 1 pablo pablo  194829 Aug 11 09:34 dtbdump_5.dtb
--rw-rw-r-- 1 pablo pablo  192593 Aug 11 09:34 dtbdump_6.dtb
--rw-rw-r-- 1 pablo pablo  193324 Aug 11 09:34 dtbdump_7.dtb
--rw-rw-r-- 1 pablo pablo  193384 Aug 11 09:34 dtbdump_8.dtb
--rw-rw-r-- 1 pablo pablo  193384 Aug 11 09:34 dtbdump_9.dtb
--rw-rw-r-- 1 pablo pablo 7534024 Aug 11 09:34 kernel
+-rw-rw-r-- 1 pablo pablo  194829 Aug 21 01:48 dtbdump_01_Motorola_QC-MSM8226_Titan.dtb
+-rw-rw-r-- 1 pablo pablo  194829 Aug 21 01:48 dtbdump_02_Motorola_QC-MSM8226_Titan.dtb
+-rw-rw-r-- 1 pablo pablo  194829 Aug 21 01:48 dtbdump_03_Motorola_QC-MSM8226_Titan.dtb
+-rw-rw-r-- 1 pablo pablo  194829 Aug 21 01:48 dtbdump_04_Motorola_QC-MSM8226_Titan.dtb
+-rw-rw-r-- 1 pablo pablo  194829 Aug 21 01:48 dtbdump_05_Motorola_QC-MSM8226_Titan.dtb
+-rw-rw-r-- 1 pablo pablo  192593 Aug 21 01:48 dtbdump_06_Motorola_QC-MSM8226_Thea.dtb
+-rw-rw-r-- 1 pablo pablo  193324 Aug 21 01:48 dtbdump_07_Motorola_QC-MSM8226_Thea.dtb
+-rw-rw-r-- 1 pablo pablo  193384 Aug 21 01:48 dtbdump_08_Motorola_QC-MSM8226_Thea.dtb
+-rw-rw-r-- 1 pablo pablo  193384 Aug 21 01:48 dtbdump_09_Motorola_QC-MSM8226_Thea.dtb
+-rw-rw-r-- 1 pablo pablo 7534024 Aug 21 01:48 kernel
 ```
 
-Also works with `boot.img`.
+This tool can also be run directly on `boot.img` images.
