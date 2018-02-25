@@ -20,7 +20,7 @@ import argparse
 import os
 import string
 
-__version__ = "1.2"
+__version__ = "1.3"
 
 DTB_HEADER = b"\xd0\x0d\xfe\xed"
 
@@ -28,6 +28,21 @@ DTB_HEADER = b"\xd0\x0d\xfe\xed"
 def dump_file(filename, content):
     with open(filename, "wb") as fp:
         fp.write(content)
+
+
+def safe_output_path(output_dir, dtb_filename_new):
+    """ Safely combines the output folder with the relative path of the dtb
+        (which may contain subfolders) and creates the necessary folder
+        structure.
+
+        :returns: the resulting file name
+    """
+    if "../" in dtb_filename_new + "/":
+        raise RuntimeException("DTB file path points outside of extraction"
+                               " directory: " + dtb_filename_new)
+    ret = os.path.join(args.output_dir, dtb_filename_new)
+    os.makedirs(os.path.dirname(ret), exist_ok=True)
+    return ret
 
 
 def split(args):
@@ -59,8 +74,9 @@ def split(args):
                 dtb_name = get_dtb_model(filepath)
                 if dtb_name:
                     dtb_filename_new = get_dtb_filename(n, dtb_name)
-                    os.rename(filepath,
-                              os.path.join(args.output_dir, dtb_filename_new))
+                    dtb_filename_new_full = safe_output_path(args.output_dir,
+                                                             dtb_filename_new)
+                    os.rename(filepath, dtb_filename_new_full)
                     dtb_filename = dtb_filename_new
             print("Dumped {0}, start={1} end={2}"
                   .format(dtb_filename, begin_pos, pos))
