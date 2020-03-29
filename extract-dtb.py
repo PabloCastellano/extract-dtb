@@ -106,7 +106,7 @@ def get_dtb_filename(n, suffix=""):
     n = str(n).zfill(2)
     basename = "{0}_dtbdump".format(n)
     if suffix != "":
-        basename += "_" + suffix.replace(" ", "_")
+        basename += "_" + suffix.replace(" ", "_").replace("/", "_")
     return basename + ".dtb"
 
 
