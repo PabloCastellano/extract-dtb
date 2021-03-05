@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 from setuptools import setup
+import extract_dtb
 
-version = "1.3.dev0"
-
+version = extract_dtb.__version__
 
 setup(
     name="extract-dtb",
     packages=["extract_dtb"],
-    entry_points={"console_scripts": ["extract-dtb = extract_dtb.extract_dtb:main"]},
     version=version,
+    entry_points={"console_scripts": ["extract-dtb = extract_dtb.extract_dtb:main"]},
     description="Tool to split a kernel image with appended dtbs into separated kernel and dtb files.",
     long_description=open("README.md").read(),
     author="Pablo Castellano",

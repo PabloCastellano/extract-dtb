@@ -1,10 +1,10 @@
 Changelog for extract-dtb
 =========================
 
-1.3 (unreleased)
-----------------
+1.2.1 (unreleased)
+------------------
 
-- Nothing changed yet.
+- Fix broken release
 
 
 1.2 (2021-03-05)
