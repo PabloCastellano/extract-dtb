@@ -1,7 +1,7 @@
 Changelog for extract-dtb
 =========================
 
-1.2 (unreleased)
+1.2 (2021-03-05)
 ----------------
 
 - Support extracting DTBs with subfolders
