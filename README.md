@@ -12,10 +12,18 @@ require any external Python library.
 If you want to learn more about DTB you can have a look at the
 [Device Tree Reference](http://elinux.org/Device_Tree_Reference).
 
-## Usage
+## Install & Usage
+
+`extract-dtb` is available on PyPI!
 
 ```
-$ ./extract-dtb.py --help
+$ pip install extract-dtb
+```
+
+The `extract-dtb` command is now available:
+
+```
+$ extract-dtb --help
 usage: extract-dtb.py [-h] [-o OUTPUT_DIR] [-n] [-V] filename
 
 Extract dtbs from kernel images.
