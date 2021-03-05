@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Copyright 2017 Pablo Castellano
+Copyright 2017-2021 Pablo Castellano
 
 extract-dtb is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,8 +19,6 @@ along with extract-dtb.  If not, see <http://www.gnu.org/licenses/>.
 import argparse
 import os
 import string
-
-__version__ = "1.3"
 
 DTB_HEADER = b"\xd0\x0d\xfe\xed"
 
@@ -128,7 +126,7 @@ def get_dtb_model(filename, min_length=4):
     return None
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(description="Extract dtbs from kernel images.")
     parser.add_argument("filename", help="Android kernel image")
     parser.add_argument("-o", dest="output_dir", default="dtb",
@@ -140,3 +138,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     split(args)
+
+
+if __name__ == "__main__":
+    main()

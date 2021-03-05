@@ -1,0 +1,2 @@
+recursive-include extract_dtb *
+global-exclude *.pyc
