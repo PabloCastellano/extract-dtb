@@ -29,23 +29,25 @@ def dump_file(filename, content):
 
 
 def safe_output_path(output_dir, dtb_filename_new):
-    """ Safely combines the output folder with the relative path of the dtb
-        (which may contain subfolders) and creates the necessary folder
-        structure.
+    """Safely combines the output folder with the relative path of the dtb
+    (which may contain subfolders) and creates the necessary folder
+    structure.
 
-        :returns: the resulting file name
+    :returns: the resulting file name
     """
     if "../" in dtb_filename_new + "/":
-        raise RuntimeException("DTB file path points outside of extraction"
-                               " directory: " + dtb_filename_new)
+        raise RuntimeException(
+            "DTB file path points outside of extraction"
+            " directory: " + dtb_filename_new
+        )
     ret = os.path.join(args.output_dir, dtb_filename_new)
     os.makedirs(os.path.dirname(ret), exist_ok=True)
     return ret
 
 
 def split(args):
-    """ Reads a file and looks for DTB_HEADER occurrences (beginning of each DTB)
-        Then extract each one. If possible, use the device model as filename.
+    """Reads a file and looks for DTB_HEADER occurrences (beginning of each DTB)
+    Then extract each one. If possible, use the device model as filename.
     """
     positions = []
 
@@ -72,12 +74,12 @@ def split(args):
                 dtb_name = get_dtb_model(filepath)
                 if dtb_name:
                     dtb_filename_new = get_dtb_filename(n, dtb_name)
-                    dtb_filename_new_full = safe_output_path(args.output_dir,
-                                                             dtb_filename_new)
+                    dtb_filename_new_full = safe_output_path(
+                        args.output_dir, dtb_filename_new
+                    )
                     os.rename(filepath, dtb_filename_new_full)
                     dtb_filename = dtb_filename_new
-            print("Dumped {0}, start={1} end={2}"
-                  .format(dtb_filename, begin_pos, pos))
+            print("Dumped {0}, start={1} end={2}".format(dtb_filename, begin_pos, pos))
             begin_pos = pos
 
         # Last chunk
@@ -87,13 +89,20 @@ def split(args):
         dtb_name = get_dtb_model(filepath)
         if dtb_name:
             dtb_filename_new = get_dtb_filename(n + 1, dtb_name)
-            os.rename(os.path.join(filepath),
-                      os.path.join(args.output_dir, dtb_filename_new))
+            os.rename(
+                os.path.join(filepath), os.path.join(args.output_dir, dtb_filename_new)
+            )
             dtb_filename = dtb_filename_new
-        print("Dumped {0}, start={1} end={2}"
-              .format(dtb_filename, begin_pos, len(content)))
-        print("Extracted {0} appended dtbs + kernel to {1}"
-              .format(len(positions), args.output_dir))
+        print(
+            "Dumped {0}, start={1} end={2}".format(
+                dtb_filename, begin_pos, len(content)
+            )
+        )
+        print(
+            "Extracted {0} appended dtbs + kernel to {1}".format(
+                len(positions), args.output_dir
+            )
+        )
     else:
         print("Found {0} appended dtbs".format(len(positions)))
 
@@ -109,8 +118,8 @@ def get_dtb_filename(n, suffix=""):
 
 
 def get_dtb_model(filename, min_length=4):
-    """ Finds the first printable string in a file with length greater
-        than min_length. Replaces spaces with underscores.
+    """Finds the first printable string in a file with length greater
+    than min_length. Replaces spaces with underscores.
     """
     with open(filename, errors="ignore") as f:
         result = ""
@@ -129,10 +138,17 @@ def get_dtb_model(filename, min_length=4):
 def main():
     parser = argparse.ArgumentParser(description="Extract dtbs from kernel images.")
     parser.add_argument("filename", help="Android kernel image")
-    parser.add_argument("-o", dest="output_dir", default="dtb",
-                        required=False, help="Output directory")
-    parser.add_argument("-n", dest="extract", action="store_false", default=True,
-                        required=False, help="Do not extract, just output information")
+    parser.add_argument(
+        "-o", dest="output_dir", default="dtb", required=False, help="Output directory"
+    )
+    parser.add_argument(
+        "-n",
+        dest="extract",
+        action="store_false",
+        default=True,
+        required=False,
+        help="Do not extract, just output information",
+    )
     parser.add_argument("-V", "--version", action="version", version=__version__)
 
     args = parser.parse_args()
