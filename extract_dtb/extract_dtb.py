@@ -42,7 +42,7 @@ def safe_output_path(output_dir, dtb_filename_new):
             "DTB file path points outside of extraction"
             " directory: " + dtb_filename_new
         )
-    ret = os.path.join(args.output_dir, dtb_filename_new)
+    ret = os.path.join(output_dir, dtb_filename_new)
     os.makedirs(os.path.dirname(ret), exist_ok=True)
     return ret
 
