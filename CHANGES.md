@@ -1,10 +1,10 @@
 Changelog for extract-dtb
 =========================
 
-1.3 (unreleased)
-----------------
+1.2.2 (2021-03-19)
+------------------
 
-- Nothing changed yet.
+- Fixed typo: safe_output_path directly receives output_dir argument, not args
 
 
 1.2.1 (2021-03-05)

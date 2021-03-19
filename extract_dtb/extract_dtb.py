@@ -20,7 +20,7 @@ import argparse
 import os
 import string
 
-__version__ = "1.2.1.dev0"
+__version__ = "1.2.2"
 
 DTB_HEADER = b"\xd0\x0d\xfe\xed"
 
