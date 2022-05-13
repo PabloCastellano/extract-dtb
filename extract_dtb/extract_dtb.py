@@ -130,10 +130,10 @@ def get_dtb_model(filename, min_length=4):
                 result += c
                 continue
             if len(result) >= min_length:
-                return result.replace(" ", "_")
+                return result.replace(" ", "_").replace("\t", "_").replace("\n", "_").replace("\r", "_")
             result = ""
         if len(result) >= min_length:  # catch result at EOF
-            return result.replace(" ", "_")
+            return result.replace(" ", "_").replace("\t", "_").replace("\n", "_").replace("\r", "_")
     return None
 
 
