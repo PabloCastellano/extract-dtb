@@ -1,10 +1,10 @@
 Changelog for extract-dtb
 =========================
 
-1.3 (unreleased)
-----------------
+1.2.3 (2022-09-29)
+------------------
 
-- Nothing changed yet.
+- Sanitize output filename by removing newlines and special characters (#14).
 
 
 1.2.2 (2021-03-19)
