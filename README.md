@@ -26,7 +26,7 @@ The `extract-dtb` command is now available:
 
 ```
 $ extract-dtb --help
-usage: extract-dtb.py [-h] [-o OUTPUT_DIR] [-n] [-V] filename
+usage: extract-dtb [-h] [-o OUTPUT_DIR] [-n] [-V] filename
 
 Extract dtbs from kernel images.
 
@@ -43,10 +43,10 @@ optional arguments:
 Example:
 
 ```
-$ ./extract-dtb.py -n /tmp/postmarketOS-export/vmlinuz-motorola-titan
+$ extract-dtb -n /tmp/postmarketOS-export/vmlinuz-motorola-titan
 Found 9 appended dtbs
 
-$ ./extract-dtb.py /tmp/postmarketOS-export/vmlinuz-motorola-titan -o /tmp/dtb
+$ extract-dtb /tmp/postmarketOS-export/vmlinuz-motorola-titan -o /tmp/dtb
 Dumped kernel, start=0 end=7534024
 Dumped dtbdump_01_Motorola_QC-MSM8226_Titan.dtb, start=7534024 end=7728853
 Dumped dtbdump_02_Motorola_QC-MSM8226_Titan.dtb, start=7728853 end=7923682
