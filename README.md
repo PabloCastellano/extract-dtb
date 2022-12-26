@@ -74,3 +74,7 @@ total 9088
 ```
 
 This tool can also be run directly on `boot.img` images.
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=PabloCastellano/extract-dtb&type=Date)](https://star-history.com/#PabloCastellano/extract-dtb&Date)
